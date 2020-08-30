@@ -1,0 +1,155 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+section {
+    padding: 7rem 0;
+}
+
+.split {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.split>* {
+    flex-basis: 30%;
+    min-width: 15rem;
+}
+
+.container {
+    width: 85%;
+    margin: 0 auto;
+    max-width: 65rem;
+}
+
+
+/* any child of spacing */
+
+.spacing>*+* {
+    margin-top: var(--spacer, 2rem);
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--clr-text, #fff);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.125rem;
+    padding: 0.5rem 1.25rem;
+    background: var(--clr-accent, blue);
+    border-radius: 0.25rem;
+    transition: transform 250ms ease-in-out, opacity 250ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+.primary-title {
+    font-size: 4rem;
+    /*smallest can be 3 and largest can be 4.5 and in-between it will grow at that rate*/
+    font-size: clamp(3rem, calc(5vw + 1rem), 4.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(2.5rem, calc(5vw+1rem), 4rem);
+    line-height: 1;
+    color: #17353d;
+    margin-bottom: 5rem;
+}
+
+.hero {
+    text-align: center;
+    color: white;
+    padding: 15rem 0;
+    background-color: #222;
+    /*if we want to make some repitive pattern*/
+    /* background-size: 10%; */
+}
+
+@supports (background-blend-mode: multiply) {
+    .hero {
+        background-image: url(../img/shoe-3.png), radial-gradient(#444, #111);
+        /* background-blend-mode: multiply; */
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+.featured {
+    background: #eee;
+}
+
+.featured_items {
+    display: block;
+    position: relative;
+    transform: scale(0.85);
+    transition: trasform 250ms ease-in-out;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    line-height: 1.2;
+    /* border: 1px solid red; */
+}
+
+span {
+    display: block;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.featured_items:hover,
+.featured_items:focus {
+    transform: scale(1);
+}
+
+.featured_items::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    padding: 75% 75% 0 0;
+    background: #2193b0;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.featured__details {
+    opacity: 0;
+    transition: opacity 250ms linear;
+}
+
+.featured_items:hover .featured__details,
+.featured_items:focus .featured__details {
+    opacity: 1;
+    text-shadow: 0 0 2em rgba(#fff, 1);
+}
